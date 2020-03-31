@@ -40,6 +40,7 @@ public class WindowPrueba extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         lblN2 = new javax.swing.JLabel();
         lblN1 = new javax.swing.JLabel();
+        btnDividir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         resultado = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -99,6 +100,13 @@ public class WindowPrueba extends javax.swing.JFrame {
 
         lblN1.setText("#");
 
+        btnDividir.setText("Dividir");
+        btnDividir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDividirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,7 +122,8 @@ public class WindowPrueba extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                    .addComponent(btnSumar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSumar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDividir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,7 +148,7 @@ public class WindowPrueba extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(btnMostrar)))
+                            .addComponent(btnDividir)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -150,7 +159,9 @@ public class WindowPrueba extends javax.swing.JFrame {
                             .addComponent(lblN2))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(n2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMostrar)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -248,7 +259,10 @@ public class WindowPrueba extends javax.swing.JFrame {
 
     private void n1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n1ActionPerformed
         // TODO add your handling code here:
-        
+        if(n1.getText() == null){
+            System.out.println("No hay datos");
+        } else {
+        }
     }//GEN-LAST:event_n1ActionPerformed
 
     private void n2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n2ActionPerformed
@@ -259,6 +273,21 @@ public class WindowPrueba extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnSumar.setEnabled(true);
     }//GEN-LAST:event_n1KeyPressed
+
+    private void btnDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDividirActionPerformed
+        // TODO add your handling code here:
+        int num1=0, num2=0;
+        float res=0;
+         
+        //Impresión en entorno gráfico
+        num1 = Integer.parseInt(n1.getText());
+        num2 = Integer.parseInt(n2.getText());
+        
+        res = (float)num1 / num2;
+        
+        System.out.println(res);
+        resultado.setText(Float.toString(res));
+    }//GEN-LAST:event_btnDividirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,6 +325,7 @@ public class WindowPrueba extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDividir;
     private javax.swing.JButton btnMostrar;
     private javax.swing.JButton btnSumar;
     private javax.swing.JLabel jLabel1;
