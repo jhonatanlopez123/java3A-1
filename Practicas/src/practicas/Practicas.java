@@ -18,7 +18,7 @@ public class Practicas {
         // TODO code application logic here
         //CREE UN SCRIPT QUE PERMITA VISUALIZAR LOS NÚMEROS 
         //DEL 1 AL 10 CON CICLO FOR INICIANDO LA VARIABLE INCREMENTO EN 0
-        int i=0;
+        /*int i=0;
         for(i=0;i<10;i++){
             System.out.println(i+1);
         }
@@ -27,7 +27,38 @@ public class Practicas {
         //DEL 1 AL 10 CON CICLO FOR INICIANDO LA VARIABLE INCREMENTO EN 1
         for(i=1;i<=10;i++){
             System.out.println(i);
+        }*/
+        
+        int Numbers[] = new int[10], i=0;
+        String Names[] = new String[10];
+        
+        //Insert data into vectors
+        Numbers[0] = 10;
+        
+        Names[0] = "Peter";
+        Names[1] = "Juan";
+        Names[2] = "Manuel";
+        Names[3] = "Felipe";
+        Names[4] = "Carlos";
+        Names[5] = "Fabian";
+        Names[6] = "Maria";
+        Names[7] = "Isabel";
+        Names[8] = "Marta";
+        Names[9] = "Sofia";
+        
+        //Show vector data
+        System.out.println("The number at index 0 is: " + Numbers[0]);
+        System.out.println("The name at index 0 is: " + Names[0]);
+        System.out.println("The vector size is: " + Names.length);
+        
+        for(i=0;i<Names.length;i++){
+            System.out.println("Name " + (i+1) + ": " + Names[i]);
         }
+        
+        
+        
+        
+        
     }
     
 }

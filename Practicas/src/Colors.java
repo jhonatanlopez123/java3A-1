@@ -44,7 +44,7 @@ public class Colors extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Colors");
-        setPreferredSize(new java.awt.Dimension(800, 400));
+        setPreferredSize(new java.awt.Dimension(670, 400));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -56,7 +56,7 @@ public class Colors extends javax.swing.JFrame {
         jLabel1.setText("My Colors");
         jLabel1.setOpaque(true);
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 10, 710, 40);
+        jLabel1.setBounds(0, 10, 670, 40);
 
         cmbColors.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yellow", "Red", "Blue", "Green", "Black", "White", "Brown" }));
         jPanel1.add(cmbColors);
@@ -132,7 +132,7 @@ public class Colors extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
