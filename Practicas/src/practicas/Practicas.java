@@ -5,6 +5,8 @@
  */
 package practicas;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Family
@@ -29,12 +31,12 @@ public class Practicas {
             System.out.println(i);
         }*/
         
-        int Numbers[] = new int[10], i=0;
-        String Names[] = new String[10];
+        //int Numbers[] = new int[10], i=0;
+        //String Names[] = new String[10];
         
         //Insert data into vectors
-        Numbers[0] = 10;
-        
+        //Numbers[0] = 10;
+        /*
         Names[0] = "Peter";
         Names[1] = "Juan";
         Names[2] = "Manuel";
@@ -45,16 +47,37 @@ public class Practicas {
         Names[7] = "Isabel";
         Names[8] = "Marta";
         Names[9] = "Sofia";
-        
+        */
         //Show vector data
-        System.out.println("The number at index 0 is: " + Numbers[0]);
+        /*System.out.println("The number at index 0 is: " + Numbers[0]);
         System.out.println("The name at index 0 is: " + Names[0]);
         System.out.println("The vector size is: " + Names.length);
         
         for(i=0;i<Names.length;i++){
             System.out.println("Name " + (i+1) + ": " + Names[i]);
         }
-        
+        */
+       
+       int x = 0, i= 0; 
+       Scanner l = new Scanner(System.in);
+       System.out.println("digite la cantidad de numeros: ");
+       int a = l.nextInt();
+       int b[] = new int [a];
+       for(i = 1;i<=a;i++){
+            System.out.println("digite un numero: ");
+            x = l.nextInt();
+//            System.out.println(i);
+            b[i-1] = x;
+            if (i>=3){
+                int v = b[i-2] + b[i-3];
+                if (v == b[i-1]){
+                    System.out.println("-----------");
+                    System.out.println("ERROR");
+                    System.out.println("-----------");
+                    i--;
+                }
+            }
+       }
         
         
         
