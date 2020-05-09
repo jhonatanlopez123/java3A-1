@@ -6,6 +6,7 @@
 package market;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -176,16 +177,23 @@ public class ProductsView extends javax.swing.JFrame {
     private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
         // TODO add your handling code here:
         
-        Product product = new Product (
-                txtProductName.getText(),
-                Integer.parseInt(txtProductCode.getText()),
-                Integer.parseInt(txtProductQ.getText()),
-                Float.parseFloat(txtProductPrice.getText())
-        );
-        
-        product_list.add(product);
-        
-        showData();
+        if (txtProductCode.getText().isEmpty() == true){
+            JOptionPane.showMessageDialog(null,"::: There are some empty fields :::");
+        } else {
+            Product product = new Product (
+                    txtProductName.getText(),
+                    Integer.parseInt(txtProductCode.getText()),
+                    Integer.parseInt(txtProductQ.getText()),
+                    Float.parseFloat(txtProductPrice.getText())
+            );
+
+            product_list.add(product);
+
+            JOptionPane.showMessageDialog(null,"::: The product has been registered :::");
+
+            showData();
+            clearForm();
+        }
         
         //System.out.println("Object product: " + product_list);
         //System.out.println("Object product 0: " + product_list.get(0));
@@ -215,6 +223,13 @@ public class ProductsView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+    }
+    
+    public void clearForm(){
+        txtProductName.setText(null);
+        txtProductCode.setText(null);
+        txtProductQ.setText(null);
+        txtProductPrice.setText(null);
     }
     /**
      * @param args the command line arguments
