@@ -35,7 +35,7 @@ public class LoginView extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Users access");
         setResizable(false);
 
@@ -48,6 +48,11 @@ public class LoginView extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 51, 51));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Sign up");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 204, 51));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,6 +110,13 @@ public class LoginView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //dispose(); //It method is going to close LoginView JFrame
+        RegisterUserView r = new RegisterUserView();
+        r.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

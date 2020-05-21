@@ -177,28 +177,46 @@ public class ProductsView extends javax.swing.JFrame {
     private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
         // TODO add your handling code here:
         
-        if (txtProductCode.getText().isEmpty() == true){
+        if (txtProductCode.getText().isEmpty() == true ||
+                txtProductName.getText().toString() == "" ||
+                txtProductQ.getText().isEmpty() == true || 
+                txtProductPrice.getText().isEmpty() == true){
             JOptionPane.showMessageDialog(null,"::: There are some empty fields :::");
         } else {
-            Product product = new Product (
-                    txtProductName.getText(),
-                    Integer.parseInt(txtProductCode.getText()),
-                    Integer.parseInt(txtProductQ.getText()),
-                    Float.parseFloat(txtProductPrice.getText())
-            );
+            if(status()){
+                JOptionPane.showMessageDialog(null,"::: The product already exists :::");
+            } else {      
+                Product product = new Product (
+                        txtProductName.getText(),
+                        Integer.parseInt(txtProductCode.getText()),
+                        Integer.parseInt(txtProductQ.getText()),
+                        Float.parseFloat(txtProductPrice.getText())
+                );
 
-            product_list.add(product);
+                product_list.add(product);
 
-            JOptionPane.showMessageDialog(null,"::: The product has been registered :::");
+                JOptionPane.showMessageDialog(null,"::: The product has been registered :::");
 
-            showData();
-            clearForm();
+                showData();
+                clearForm();
+            }
         }
         
         //System.out.println("Object product: " + product_list);
         //System.out.println("Object product 0: " + product_list.get(0));
     }//GEN-LAST:event_btnAddProductActionPerformed
 
+    public boolean status(){
+        boolean x = false; 
+        for (int i=0; i<product_list.size(); i++){
+            if(product_list.get(i).getCode() == Integer.parseInt(txtProductCode.getText())){
+                x=true;
+                break;
+            }
+        }
+        return x;
+    }
+    
     public void showData(){
         String matris_products[][] = new String[product_list.size()][4];
         
