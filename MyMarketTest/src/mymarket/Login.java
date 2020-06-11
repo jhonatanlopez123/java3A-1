@@ -6,28 +6,31 @@
 package mymarket;
 
 import Config.Database;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Family
  */
 public class Login extends javax.swing.JFrame {
-
     Database conn = new Database();
     Connection cnx;
     ResultSet rs;
-    Statement st;    
+    Statement st;
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        this.setIconImage(new ImageIcon(getClass().getResource("../icons/scan.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("../icons/food.png")).getImage());
     }
 
     /**
@@ -54,10 +57,8 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Username:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Password:");
+        jLabel3.setText("Username:");
 
-        btnSignin.setBackground(new java.awt.Color(0, 204, 51));
-        btnSignin.setForeground(new java.awt.Color(255, 255, 255));
         btnSignin.setText("Sign in");
         btnSignin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,8 +66,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        btnSignup.setBackground(new java.awt.Color(255, 51, 51));
-        btnSignup.setForeground(new java.awt.Color(255, 255, 255));
         btnSignup.setText("Sign up");
         btnSignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,38 +132,41 @@ public class Login extends javax.swing.JFrame {
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
         // TODO add your handling code here:
-        String USERNAME = txtUsernameLogin.getText().toString();
+        String EMAIL = txtUsernameLogin.getText().toString();
         String PASSWORD = txtPasswordLogin.getText().toString();
+        int TOTAL_ROWS=0;
         
-        if (USERNAME.equals("") || PASSWORD.equals("")) {
-            JOptionPane.showMessageDialog(null, "::: There are some empty field :::");
-        } else {
-            int TOTAL_ROWS = 0;
-            String query_user = ""
-                    + "SELECT COUNT(*) as total "
+        if (EMAIL.equals("") || PASSWORD.equals("")) {
+            JOptionPane.showMessageDialog(null, "There're some empty fields");
+        } else {    
+            String query = ""
+                    + "SELECT "
+                    + " COUNT(*) AS total "
                     + "FROM users "
-                    + "WHERE email = '"+USERNAME+"' AND password = '"+PASSWORD+"' ";
+                    + "WHERE email = '"+ EMAIL +"' AND password = '"+ PASSWORD +"' "
+                    + "LIMIT 1";    
             try {
+                //BD
                 cnx = conn.getConnection();
                 st = cnx.createStatement();
-                rs = st.executeQuery(query_user);
-                while (rs.next()){
+                rs = st.executeQuery(query);
+                
+                while (rs.next()) {
                     TOTAL_ROWS = rs.getInt("total");
                 }
             } catch (Exception e) {
-                System.out.println("::: ERROR :::");
             }
-
-            if (TOTAL_ROWS == 1) {
+            
+            if (TOTAL_ROWS > 0) {
+                //JOptionPane.showMessageDialog(null, "The user do exist");
+                //System.out.println("Total: " + TOTAL_ROWS);
                 MainMenu mm = new MainMenu();
                 mm.setVisible(true);
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "::: Invalid email or password :::");
-            }
+                JOptionPane.showMessageDialog(null, "The user doesn't exist");
+            }    
         }
-        
-        
     }//GEN-LAST:event_btnSigninActionPerformed
 
     /**
